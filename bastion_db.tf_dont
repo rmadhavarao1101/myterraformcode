@@ -1,0 +1,34 @@
+resource "oci_bastion_bastion" "my_bastion_db" {
+    #Required
+    bastion_type = "standard"
+    compartment_id = oci_identity_compartment.sub_compartment_sec.id
+    target_subnet_id = oci_core_subnet.regional_subnet23.id  #CHANGE ME
+    name = "bastion-${var.client_name}-${local.region_key}-db"
+    client_cidr_block_allow_list = ["0.0.0.0/0"]
+}
+##################################
+#    Bastion Session
+##################################
+
+resource "oci_bastion_session" "my_bastion_session" {
+    #Required
+    bastion_id = oci_bastion_bastion.my_bastion_db.id
+    key_details {
+        public_key_content = var.bastion_ssh_public_key
+    }
+
+    target_resource_details {
+        #target_resource_id = "ocid1.dbsystem.oc1.ca-toronto-1.an2g6ljrvrxjjqyanspksnq6pcqkmtveiqd2e4jae52kw6cxr6kipombngbq"
+        #depends_on = [oci_identity_compartment.sub_compartments_db]
+        #target_resource_id = oci_database_db_system.my_db_system.id
+        #target_resource_id = oci_core_instance.test_instance.id
+        #target_resource_fqdn = "dbsony-scan.regionalsubnet3.vcn1.oraclevcn.com"
+        session_type = "PORT_FORWARDING"
+        target_resource_port = "22" 
+        #target_resource_private_ip_address = var.session_target
+        target_resource_private_ip_address = oci_database_db_system.my_db_system.private_ip
+    }
+    display_name = "bastionsession-${var.client_name}-${local.region_key}-01"   
+    key_type = "PUB"
+    session_ttl_in_seconds = "10800"  
+}

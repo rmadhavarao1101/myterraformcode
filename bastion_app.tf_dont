@@ -1,0 +1,11 @@
+resource "oci_bastion_bastion" "my_bastion_www" {
+    #Required
+    bastion_type = "standard"
+    compartment_id = oci_identity_compartment.sub_compartment_sec.id
+    target_subnet_id = oci_core_subnet.regional_subnet22.id  #CHANGE ME
+    name = "bastion-${var.client_name}-${local.region_key}-www"
+    client_cidr_block_allow_list = ["0.0.0.0/0"]
+}
+##################################
+#    Bastion Session
+##################################
