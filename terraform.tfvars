@@ -1,8 +1,8 @@
 
 ##Necessary fields required for connecting to the target OCI tenancy
 
-user_ocid        = "ocid1.user.oc1..mydummy"          
-fingerprint      = "8f:51:56:27:6b:mydummy"                      
+user_ocid        = "ocid1.user.oc1..mydummyocid"          
+fingerprint      = "8f:51:56:27:6b:mydummyocid"                      
 private_key_path = "/Users/Rajesh.Madhavarao/Documents/terraform/myprojcode/rajesh_tf_mi_priv.pem"     
 tenancy_ocid     = "ocid1.tenancy.oc1..mydummy"       
 compartment_ocid = "ocid1.compartment.oc1..mydummy"
