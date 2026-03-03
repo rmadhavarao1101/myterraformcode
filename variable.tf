@@ -26,7 +26,7 @@ variable "user_ocid" {  										##User OCID
 
 variable "compartment_ocid" {
 type = string
-#default = "ocid1.compartment.oc1..aaaaaaaaskpl4e64lckhvjyzpn2amztpnuqq4mo2gjag6si3272kgdzcnwja"        ##parent compartment OCID
+#default = "ocid1.compartment.dummyocid"        ##parent compartment OCID
 }
 
 variable "fingerprint" {										##fingerprint	
@@ -36,7 +36,7 @@ variable "fingerprint" {										##fingerprint
 
 variable "tenancy_ocid" {
 type = string
-#default = "ocid1.tenancy.oc1..aaaaaaaaqkfafm7ykyzmszzdoe3hvimyx5dszcvg7fiju4tjrkkqt7crdn7a"       	##tenancy OCID
+#default = "ocid1.tenancy.oc1..dummyocid"       	##tenancy OCID
 }
 
 variable "vcn_cidr" {
@@ -232,7 +232,7 @@ variable "instance_memory_gb" {
 variable "windows_image_ocid" {
   description = "The OCID of the Windows image to use"
   type        = string
-#  default     = "ocid1.image.oc1.ca-toronto-1.aaaaaaaarp6kviuuh26pwjkorwmhgj6zypdnp47tt2a5kxkljy6p3k4g4rla"
+#  default     = "ocid1.image.oc1.ca-toronto-1.dummyocid"
 }
 
 ######## Basion service details ###########
